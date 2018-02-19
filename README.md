@@ -1,2 +1,4 @@
 # FileHash
-compute hash of file parallel
+Compute hash of file parallel.
+
+Language supports: Chinese Simplified, English, Japanese
