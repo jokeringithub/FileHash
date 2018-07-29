@@ -3,87 +3,69 @@
     public partial class MainWindow
     {
         /// <summary>
-        /// 文件信息和散列值标志向量类
+        /// 文件信息和散列值标志向量。
         /// </summary>
         public class FileInfoAndHashEnables
         {
-            private bool fileName;
-            private bool fileFullName;
-            private bool fileLength;
-            private bool fileLastWriteTime;
-
-            private bool fileCRC32;
-            private bool fileMD5;
-            private bool fileSHA1;
-            private bool fileSHA256;
-            private bool fileSHA384;
-            private bool fileSHA512;
-
             /// <summary>
-            /// 文件名
+            /// 文件名。
             /// </summary>
-            public bool FileName { get => fileName; set => fileName = value; }
+            public bool Name { get; set; }
             /// <summary>
-            /// 文件路径
+            /// 文件路径。
             /// </summary>
-            public bool FileFullName { get => fileFullName; set => fileFullName = value; }
+            public bool FullName { get; set; }
             /// <summary>
-            /// 文件大小
+            /// 文件大小。
             /// </summary>
-            public bool FileLength { get => fileLength; set => fileLength = value; }
+            public bool Length { get; set; }
             /// <summary>
-            /// 修改日期
+            /// 修改日期。
             /// </summary>
-            public bool FileLastWriteTime { get => fileLastWriteTime; set => fileLastWriteTime = value; }
-
+            public bool LastWriteTime { get; set; }
             /// <summary>
-            /// CRC32
+            /// CRC32。
             /// </summary>
-            public bool FileCRC32 { get => fileCRC32; set => fileCRC32 = value; }
+            public bool CRC32 { get; set; }
             /// <summary>
-            /// MD5
+            /// MD5。
             /// </summary>
-            public bool FileMD5 { get => fileMD5; set => fileMD5 = value; }
+            public bool MD5 { get; set; }
             /// <summary>
-            /// SHA1
+            /// SHA-1。
             /// </summary>
-            public bool FileSHA1 { get => fileSHA1; set => fileSHA1 = value; }
+            public bool SHA1 { get; set; }
             /// <summary>
-            /// SHA256
+            /// SHA-256。
             /// </summary>
-            public bool FileSHA256 { get => fileSHA256; set => fileSHA256 = value; }
+            public bool SHA256 { get; set; }
             /// <summary>
-            /// SHA384
+            /// SHA-384。
             /// </summary>
-            public bool FileSHA384 { get => fileSHA384; set => fileSHA384 = value; }
+            public bool SHA384 { get; set; }
             /// <summary>
-            /// SHA512
+            /// SHA-512。
             /// </summary>
-            public bool FileSHA512 { get => fileSHA512; set => fileSHA512 = value; }
+            public bool SHA512 { get; set; }
 
             /// <summary>
-            /// 所有标志位组成的标志向量
+            /// 所有标志位组成的标志向量。
             /// </summary>
             public bool[] AllEnables
             {
-                get
+                get => new bool[]
                 {
-                    bool[] allEnables = new bool[10];
-
-                    allEnables[0] = fileName;
-                    allEnables[1] = fileFullName;
-                    allEnables[2] = fileLength;
-                    allEnables[3] = fileLastWriteTime;
-
-                    allEnables[4] = fileCRC32;
-                    allEnables[5] = fileMD5;
-                    allEnables[6] = fileSHA1;
-                    allEnables[7] = fileSHA256;
-                    allEnables[8] = fileSHA384;
-                    allEnables[9] = fileSHA512;
-
-                    return allEnables;
-                }
+                    this.Name,
+                    this.FullName,
+                    this.Length,
+                    this.LastWriteTime,
+                    this.CRC32,
+                    this.MD5,
+                    this.SHA1,
+                    this.SHA256,
+                    this.SHA384,
+                    this.SHA512
+                };
             }
         }
     }

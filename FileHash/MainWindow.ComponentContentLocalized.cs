@@ -5,103 +5,96 @@ namespace FileHash
     public partial class MainWindow
     {
         /// <summary>
-        /// 提供本地化控件内容
+        /// 提供本地化控件内容。
         /// </summary>
-        public class ComponentContenLocalized
+        public partial class ComponentContentLocalized
         {
             /// <summary>
-            /// 使用特定区域设置实例化此类
+            /// 使用特定区域设置初始化 <see cref="MainWindow.ComponentContentLocalized"/> 的实例。
             /// </summary>
-            /// <param name="cultureInfo">区域信息</param>
-            public ComponentContenLocalized(CultureInfo cultureInfo)
+            /// <param name="cultureInfo">区域信息。</param>
+            public ComponentContentLocalized(CultureInfo cultureInfo)
             {
-                SupportLanguage uiLanguage;
+                // 解析语言。
+                SupportedLanguage uiLanguage;
                 switch (CultureInfo.CurrentUICulture.ThreeLetterWindowsLanguageName)
                 {
                     case "CHS":
-                        uiLanguage = SupportLanguage.ChineseSimpified;
+                        uiLanguage = SupportedLanguage.ChineseSimpified;
                         break;
                     case "CHT":
-                        uiLanguage = SupportLanguage.ChineseSimpified;
+                        uiLanguage = SupportedLanguage.ChineseSimpified;
                         break;
                     case "ENU":
-                        uiLanguage = SupportLanguage.English;
+                        uiLanguage = SupportedLanguage.English;
                         break;
                     case "JPN":
-                        uiLanguage = SupportLanguage.Japanese;
+                        uiLanguage = SupportedLanguage.Japanese;
                         break;
                     default:
-                        uiLanguage = SupportLanguage.English;
+                        uiLanguage = SupportedLanguage.English;
                         break;
                 }
 
-                InitializeProperty(uiLanguage);
-            }
-
-            /// <summary>
-            /// 初始化各属性
-            /// </summary>
-            /// <param name="uiLanguage">设定的UI语言</param>
-            private void InitializeProperty(SupportLanguage uiLanguage)
-            {
+                // 初始化各属性。
                 switch (uiLanguage)
                 {
-                    case SupportLanguage.ChineseSimpified:
-                        mainWindowTitle = "文件散列函数";
-                        copyButtonContent = "复制";
-                        clearButtonContent = "清除";
-                        skipButtonContent = "跳过";
-                        cancelButtonContent = "取消";
-                        filePathCheckBoxContent = "路径";
-                        fileSizeCheckBoxContent = "大小";
-                        fileUpdateTimeCheckBoxContent = "修改时间";
-                        fileCRC32CheckBoxContent = "CRC32";
-                        fileMD5CheckBoxContent = "MD5";
-                        fileSHA1CheckBoxContent = "SHA-1";
-                        fileSHA256CheckBoxContent = "SHA-256";
-                        fileSHA384CheckBoxContent = "SHA-384";
-                        fileSHA512CheckBoxContent = "SHA-512";
-                        lowerFormatHexRadioButtonContent = "小写十六进制";
-                        upperHexFormatRadioButtonContent = "大写十六进制";
-                        base64FormatRadioButtonContent = "Base64";
+                    case SupportedLanguage.ChineseSimpified:
+                        this.MainWindowTitle = "文件散列函数";
+                        this.CopyButtonContent = "复制";
+                        this.ClearButtonContent = "清除";
+                        this.SkipButtonContent = "跳过";
+                        this.CancelButtonContent = "取消";
+                        this.FilePathCheckBoxContent = "路径";
+                        this.FileSizeCheckBoxContent = "大小";
+                        this.FileEditTimeCheckBoxContent = "修改时间";
+                        this.FileCRC32CheckBoxContent = "CRC32";
+                        this.FileMD5CheckBoxContent = "MD5";
+                        this.FileSHA1CheckBoxContent = "SHA-1";
+                        this.FileSHA256CheckBoxContent = "SHA-256";
+                        this.FileSHA384CheckBoxContent = "SHA-384";
+                        this.FileSHA512CheckBoxContent = "SHA-512";
+                        this.LowerHexFormatRadioButtonContent = "小写十六进制";
+                        this.UpperHexFormatRadioButtonContent = "大写十六进制";
+                        this.Base64FormatRadioButtonContent = "Base64";
                         break;
-                    case SupportLanguage.English:
-                        mainWindowTitle = "File Hash";
-                        copyButtonContent = "Copy";
-                        clearButtonContent = "Clear";
-                        skipButtonContent = "Skip";
-                        cancelButtonContent = "Cancel";
-                        filePathCheckBoxContent = "Path";
-                        fileSizeCheckBoxContent = "Size";
-                        fileUpdateTimeCheckBoxContent = "Modified";
-                        fileCRC32CheckBoxContent = "CRC32";
-                        fileMD5CheckBoxContent = "MD5";
-                        fileSHA1CheckBoxContent = "SHA-1";
-                        fileSHA256CheckBoxContent = "SHA-256";
-                        fileSHA384CheckBoxContent = "SHA-384";
-                        fileSHA512CheckBoxContent = "SHA-512";
-                        lowerFormatHexRadioButtonContent = "LowerHex";
-                        upperHexFormatRadioButtonContent = "UpperHex";
-                        base64FormatRadioButtonContent = "Base64";
+                    case SupportedLanguage.English:
+                        this.MainWindowTitle = "File Hash";
+                        this.CopyButtonContent = "Copy";
+                        this.ClearButtonContent = "Clear";
+                        this.SkipButtonContent = "Skip";
+                        this.CancelButtonContent = "Cancel";
+                        this.FilePathCheckBoxContent = "Path";
+                        this.FileSizeCheckBoxContent = "Size";
+                        this.FileEditTimeCheckBoxContent = "Modified";
+                        this.FileCRC32CheckBoxContent = "CRC32";
+                        this.FileMD5CheckBoxContent = "MD5";
+                        this.FileSHA1CheckBoxContent = "SHA-1";
+                        this.FileSHA256CheckBoxContent = "SHA-256";
+                        this.FileSHA384CheckBoxContent = "SHA-384";
+                        this.FileSHA512CheckBoxContent = "SHA-512";
+                        this.LowerHexFormatRadioButtonContent = "LowerHex";
+                        this.UpperHexFormatRadioButtonContent = "UpperHex";
+                        this.Base64FormatRadioButtonContent = "Base64";
                         break;
-                    case SupportLanguage.Japanese:
-                        mainWindowTitle = "ファイルハッシュ";
-                        copyButtonContent = "コピー";
-                        clearButtonContent = "クリア";
-                        skipButtonContent = "スキップ";
-                        cancelButtonContent = "キャンセル";
-                        filePathCheckBoxContent = "パス";
-                        fileSizeCheckBoxContent = "サイズ";
-                        fileUpdateTimeCheckBoxContent = "更新日時";
-                        fileCRC32CheckBoxContent = "CRC32";
-                        fileMD5CheckBoxContent = "MD5";
-                        fileSHA1CheckBoxContent = "SHA-1";
-                        fileSHA256CheckBoxContent = "SHA-256";
-                        fileSHA384CheckBoxContent = "SHA-384";
-                        fileSHA512CheckBoxContent = "SHA-512";
-                        lowerFormatHexRadioButtonContent = "小文字十六進法";
-                        upperHexFormatRadioButtonContent = "大文字十六進法";
-                        base64FormatRadioButtonContent = "Base64";
+                    case SupportedLanguage.Japanese:
+                        this.MainWindowTitle = "ファイルハッシュ";
+                        this.CopyButtonContent = "コピー";
+                        this.ClearButtonContent = "クリア";
+                        this.SkipButtonContent = "スキップ";
+                        this.CancelButtonContent = "キャンセル";
+                        this.FilePathCheckBoxContent = "パス";
+                        this.FileSizeCheckBoxContent = "サイズ";
+                        this.FileEditTimeCheckBoxContent = "更新日時";
+                        this.FileCRC32CheckBoxContent = "CRC32";
+                        this.FileMD5CheckBoxContent = "MD5";
+                        this.FileSHA1CheckBoxContent = "SHA-1";
+                        this.FileSHA256CheckBoxContent = "SHA-256";
+                        this.FileSHA384CheckBoxContent = "SHA-384";
+                        this.FileSHA512CheckBoxContent = "SHA-512";
+                        this.LowerHexFormatRadioButtonContent = "小文字十六進法";
+                        this.UpperHexFormatRadioButtonContent = "大文字十六進法";
+                        this.Base64FormatRadioButtonContent = "Base64";
                         break;
                     default:
                         break;
@@ -109,96 +102,73 @@ namespace FileHash
             }
 
             /// <summary>
-            /// 支持的语言
+            /// 主窗口标题。
             /// </summary>
-            private enum SupportLanguage { ChineseSimpified, English, Japanese };
-
-            private string mainWindowTitle;
-            private string copyButtonContent;
-            private string clearButtonContent;
-            private string skipButtonContent;
-            private string cancelButtonContent;
-            private string filePathCheckBoxContent;
-            private string fileSizeCheckBoxContent;
-            private string fileUpdateTimeCheckBoxContent;
-            private string fileCRC32CheckBoxContent;
-            private string fileMD5CheckBoxContent;
-            private string fileSHA1CheckBoxContent;
-            private string fileSHA256CheckBoxContent;
-            private string fileSHA384CheckBoxContent;
-            private string fileSHA512CheckBoxContent;
-            private string lowerFormatHexRadioButtonContent;
-            private string upperHexFormatRadioButtonContent;
-            private string base64FormatRadioButtonContent;
-
+            public string MainWindowTitle { get; }
             /// <summary>
-            /// 主窗口标题
+            /// 复制按钮。
             /// </summary>
-            public string MainWindowTitle { get => mainWindowTitle; }
+            public string CopyButtonContent { get; }
             /// <summary>
-            /// 复制按钮
+            /// 跳过按钮。
             /// </summary>
-            public string CopyButtonContent { get => copyButtonContent; }
+            public string SkipButtonContent { get; }
             /// <summary>
-            /// 跳过按钮
+            /// 清除按钮。
             /// </summary>
-            public string SkipButtonContent { get => skipButtonContent; }
+            public string ClearButtonContent { get; }
             /// <summary>
-            /// 清除按钮
+            /// 取消按钮。
             /// </summary>
-            public string ClearButtonContent { get => clearButtonContent; }
+            public string CancelButtonContent { get; }
             /// <summary>
-            /// 取消按钮
+            /// 文件路径复选框。
             /// </summary>
-            public string CancelButtonContent { get => cancelButtonContent; }
+            public string FilePathCheckBoxContent { get; }
             /// <summary>
-            /// 文件路径复选框
+            /// 文件大小复选框。
             /// </summary>
-            public string FilePathCheckBoxContent { get => filePathCheckBoxContent; }
+            public string FileSizeCheckBoxContent { get; }
             /// <summary>
-            /// 文件大小复选框
+            /// 修改日期复选框。
             /// </summary>
-            public string FileSizeCheckBoxContent { get => fileSizeCheckBoxContent; }
+            public string FileEditTimeCheckBoxContent { get; }
             /// <summary>
-            /// 修改日期复选框
+            /// CRC32 复选框。
             /// </summary>
-            public string FileEditTimeCheckBoxContent { get => fileUpdateTimeCheckBoxContent; }
+            public string FileCRC32CheckBoxContent { get; }
             /// <summary>
-            /// CRC32复选框
+            /// MD5 复选框。
             /// </summary>
-            public string FileCRC32CheckBoxContent { get => fileCRC32CheckBoxContent; }
+            public string FileMD5CheckBoxContent { get; }
             /// <summary>
-            /// MD5复选框
+            /// SHA-1 复选框。
             /// </summary>
-            public string FileMD5CheckBoxContent { get => fileMD5CheckBoxContent; }
+            public string FileSHA1CheckBoxContent { get; }
             /// <summary>
-            /// SHA1复选框
+            /// SHA-256 复选框。
             /// </summary>
-            public string FileSHA1CheckBoxContent { get => fileSHA1CheckBoxContent; }
+            public string FileSHA256CheckBoxContent { get; }
             /// <summary>
-            /// SHA256复选框
+            /// SHA-384 复选框。
             /// </summary>
-            public string FileSHA256CheckBoxContent { get => fileSHA256CheckBoxContent; }
+            public string FileSHA384CheckBoxContent { get; }
             /// <summary>
-            /// SHA384复选框
+            /// SHA-512 复选框。
             /// </summary>
-            public string FileSHA384CheckBoxContent { get => fileSHA384CheckBoxContent; }
+            public string FileSHA512CheckBoxContent { get; }
             /// <summary>
-            /// SHA512复选框
+            /// 小写十六进制选框。
             /// </summary>
-            public string FileSHA512CheckBoxContent { get => fileSHA512CheckBoxContent; }
+            public string LowerHexFormatRadioButtonContent { get; }
             /// <summary>
-            /// 小写十六进制选框
+            /// 大写十六进制选框。
             /// </summary>
-            public string LowerHexFormatRadioButtonContent { get => lowerFormatHexRadioButtonContent; }
+            public string UpperHexFormatRadioButtonContent { get; }
             /// <summary>
-            /// 大写十六进制选框
+            /// Base64 选框。
             /// </summary>
-            public string UpperHexFormatRadioButtonContent { get => upperHexFormatRadioButtonContent; }
-            /// <summary>
-            /// Base64选框
-            /// </summary>
-            public string Base64FormatRadioButtonContent { get => base64FormatRadioButtonContent; }
+            public string Base64FormatRadioButtonContent { get; }
         }
     }
 }

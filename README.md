@@ -1,4 +1,24 @@
 # FileHash
-Compute hash of file parallel.
 
-Language supports: Chinese Simplified, English, Japanese
+并行计算文件字节的哈希函数的工具。
+
+并行计算针对单个文件的多个哈希函数，并不支持多个文件的并行计算，此行为会触发 I/O 瓶颈，使哈希函数计算反而更慢。
+
+## 界面语言
+
+* 简体中文 (zhs)
+* 英文 (enu)
+* 日文 (jpn)
+
+## 哈希函数
+
+* CRC32 *
+* MD5
+* SHA-1
+* SHA-256
+* SHA-384
+* SHA-512
+
+`* 并非标准意义上的哈希函数`
+
+以上哈希函数的输出结果均支持以小写十六进制、大写十六进制和 Base64 编码输出。

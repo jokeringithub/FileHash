@@ -24,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\FileHash.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\FileHash.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>FileHash.ico</ApplicationIcon>
@@ -63,13 +65,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="System.IO.AllFilePaths.cs" />
+    <Compile Include="Bindable.cs" />
+    <Compile Include="BindableObject.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="System.EnumerableConcat.cs" />
-    <Compile Include="System.ComponentModel.BindableObject.cs" />
     <Compile Include="FileHashParallel.FileHash.cs" />
     <Compile Include="FileHashParallel.cs" />
     <Compile Include="FileInfoAndHash.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="MainWindow.ComputeProgress.cs" />
     <Compile Include="MainWindow.FileInfoAndHashEnables.cs" />
     <Compile Include="MainWindow.FileInfoAndHashLocalized.cs" />
+    <Compile Include="MainWindow.SupportedLanguage.cs" />
     <Compile Include="MainWindow.HashFormat.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
