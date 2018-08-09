@@ -7,7 +7,7 @@ namespace FileHash
         /// <summary>
         /// 提供本地化控件内容。
         /// </summary>
-        public partial class ComponentContentLocalized
+        public class ComponentContentLocalized
         {
             /// <summary>
             /// 使用特定区域设置初始化 <see cref="MainWindow.ComponentContentLocalized"/> 的实例。
@@ -97,7 +97,7 @@ namespace FileHash
                         this.Base64FormatRadioButtonContent = "Base64";
                         break;
                     default:
-                        break;
+                        goto case SupportedLanguage.English;
                 }
             }
 

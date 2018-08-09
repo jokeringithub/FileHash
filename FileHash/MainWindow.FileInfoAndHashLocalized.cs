@@ -1,7 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
+using XstarS.ComponentModel;
 
 namespace FileHash
 {
@@ -10,7 +9,7 @@ namespace FileHash
         /// <summary>
         /// 提供本地化的结果
         /// </summary>
-        public partial class FileInfoAndHashLocalized : BindableObject
+        public class FileInfoAndHashLocalized : BindableObject
         {
             /// <summary>
             /// 简体中文提示信息。

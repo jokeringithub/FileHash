@@ -35,8 +35,13 @@ namespace FileHash
             this.fileInfoAndHashList = new FileInfoAndHashList();
             this.fileInfoAndHashList.CurrentCompleted += this.FileInfoAndHashList_CurrentCompleted;
             this.fileInfoAndHashList.ListCompleted += this.FileInfoAndHashList_ListCompleted;
-            this.MainWindowFileInfoAndHashEnables = new FileInfoAndHashEnables();
-            this.MainWindowHashFormat = new HashFormat();
+            this.MainWindowFileInfoAndHashEnables = new FileInfoAndHashEnables()
+            {
+                Name = true, FullName = false, Length = true, LastWriteTime = true,
+                CRC32 = false, MD5 = true, SHA1 = true, SHA256 = false, SHA384 = false, SHA512 = false,
+            };
+            this.MainWindowHashFormat = new HashFormat()
+            { IsLowerHexFormat = false, IsUpperHexFormat = true, IsBase64Format = false, };
             this.MainWindowComputeProgress = new ComputeProgress();
 
             // 本地化用户控件。
@@ -44,12 +49,9 @@ namespace FileHash
 
             // 初始化用户控件。
             this.InitializeComponent();
-
-            // 设定部分用户控件的初值。
-            this.InitializeComponentProperty();
-
+            
             // 初始化定时器。
-            double fps = 30;
+            const double fps = 30;
             this.mainWindowTimer = new Timer(1000 / fps);
             this.mainWindowTimer.Elapsed += this.MainWindowTimer_Elapsed;
         }
@@ -74,41 +76,6 @@ namespace FileHash
         /// 文件散列计算进度。
         /// </summary>
         public ComputeProgress MainWindowComputeProgress { get; }
-
-        /// <summary>
-        /// 初始化部分用户控件的属性。
-        /// </summary>
-        private void InitializeComponentProperty()
-        {
-            // 始终显示文件名。
-            this.MainWindowFileInfoAndHashEnables.Name = true;
-            // 文件路径复选框。
-            this.filePathCheckBox.IsChecked = false;
-            // 文件大小复选框。
-            this.fileSizeCheckBox.IsChecked = true;
-            // 修改时间复选框。
-            this.fileUpdateTimeCheckBox.IsChecked = true;
-
-            // CRC32 复选框。
-            this.fileCRC32CheckBox.IsChecked = false;
-            // MD5 复选框。
-            this.fileMD5CheckBox.IsChecked = true;
-            // SHA-1 复选框。
-            this.fileSHA1CheckBox.IsChecked = true;
-            // SHA-256 复选框。
-            this.fileSHA256CheckBox.IsChecked = false;
-            // SHA-384 复选框。
-            this.fileSHA384CheckBox.IsChecked = false;
-            // SHA-512 复选框。
-            this.fileSHA512CheckBox.IsChecked = false;
-
-            // 小写十六进制选框。
-            this.lowerHexFormatRadioButton.IsChecked = false;
-            // 大写十六进制选框。
-            this.upperHexFormatRadioButton.IsChecked = true;
-            // Base64 选框。
-            this.base64FormatRadioButton.IsChecked = false;
-        }
 
         /// <summary>
         /// 拖放完成，传递拖放的文件路径字符串。

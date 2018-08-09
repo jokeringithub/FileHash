@@ -5,7 +5,7 @@
         /// <summary>
         /// 支持的语言枚举类。
         /// </summary>
-        private enum SupportedLanguage
+        public enum SupportedLanguage
         {
             /// <summary>
             /// 简体中文。

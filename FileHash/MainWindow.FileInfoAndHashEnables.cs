@@ -1,52 +1,135 @@
-﻿namespace FileHash
+﻿using XstarS.ComponentModel;
+
+namespace FileHash
 {
     public partial class MainWindow
     {
         /// <summary>
         /// 文件信息和散列值标志向量。
         /// </summary>
-        public class FileInfoAndHashEnables
+        public class FileInfoAndHashEnables : BindableObject
         {
             /// <summary>
             /// 文件名。
             /// </summary>
-            public bool Name { get; set; }
+            private bool name;
             /// <summary>
             /// 文件路径。
             /// </summary>
-            public bool FullName { get; set; }
+            private bool fullName;
             /// <summary>
             /// 文件大小。
             /// </summary>
-            public bool Length { get; set; }
+            private bool length;
             /// <summary>
             /// 修改日期。
             /// </summary>
-            public bool LastWriteTime { get; set; }
+            private bool lastWriteTime;
             /// <summary>
             /// CRC32。
             /// </summary>
-            public bool CRC32 { get; set; }
+            private bool crc32;
             /// <summary>
             /// MD5。
             /// </summary>
-            public bool MD5 { get; set; }
+            private bool md5;
             /// <summary>
             /// SHA-1。
             /// </summary>
-            public bool SHA1 { get; set; }
+            private bool sha1;
             /// <summary>
             /// SHA-256。
             /// </summary>
-            public bool SHA256 { get; set; }
+            private bool sha256;
             /// <summary>
             /// SHA-384。
             /// </summary>
-            public bool SHA384 { get; set; }
+            private bool sha384;
             /// <summary>
             /// SHA-512。
             /// </summary>
-            public bool SHA512 { get; set; }
+            private bool sha512;
+
+            /// <summary>
+            /// 文件名。
+            /// </summary>
+            public bool Name
+            {
+                get => this.name;
+                set => this.SetProperty(ref this.name, value);
+            }
+            /// <summary>
+            /// 文件路径。
+            /// </summary>
+            public bool FullName
+            {
+                get => this.fullName;
+                set => this.SetProperty(ref this.fullName, value);
+            }
+            /// <summary>
+            /// 文件大小。
+            /// </summary>
+            public bool Length
+            {
+                get => this.length;
+                set => this.SetProperty(ref this.length, value);
+            }
+            /// <summary>
+            /// 修改日期。
+            /// </summary>
+            public bool LastWriteTime
+            {
+                get => this.lastWriteTime;
+                set => this.SetProperty(ref this.lastWriteTime, value);
+            }
+            /// <summary>
+            /// CRC32。
+            /// </summary>
+            public bool CRC32
+            {
+                get => this.crc32;
+                set => this.SetProperty(ref this.crc32, value);
+            }
+            /// <summary>
+            /// MD5。
+            /// </summary>
+            public bool MD5
+            {
+                get => this.md5;
+                set => this.SetProperty(ref this.md5, value);
+            }
+            /// <summary>
+            /// SHA-1。
+            /// </summary>
+            public bool SHA1
+            {
+                get => this.sha1;
+                set => this.SetProperty(ref this.sha1, value);
+            }
+            /// <summary>
+            /// SHA-256。
+            /// </summary>
+            public bool SHA256
+            {
+                get => this.sha256;
+                set => this.SetProperty(ref this.sha256, value);
+            }
+            /// <summary>
+            /// SHA-384。
+            /// </summary>
+            public bool SHA384
+            {
+                get => this.sha384;
+                set => this.SetProperty(ref this.sha384, value);
+            }
+            /// <summary>
+            /// SHA-512。
+            /// </summary>
+            public bool SHA512
+            {
+                get => this.sha512;
+                set => this.SetProperty(ref this.sha512, value);
+            }
 
             /// <summary>
             /// 所有标志位组成的标志向量。

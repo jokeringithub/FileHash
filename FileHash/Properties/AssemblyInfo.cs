@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("文件散列函数")]
 [assembly: AssemblyDescription("计算文件散列函数的工具")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("电子科技大学")]
+[assembly: AssemblyCompany("天南十字星")]
 [assembly: AssemblyProduct("文件散列函数")]
-[assembly: AssemblyCopyright("Copyright ©2018 天南十字星")]
+[assembly: AssemblyCopyright("Copyright © 天南十字星 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -27,9 +27,7 @@ using System.Windows;
 //使用的是美国英语，请将 <UICulture> 设置为 en-US。  然后取消
 //对以下 NeutralResourceLanguage 特性的注释。  更新
 //以下行中的“en-US”以匹配项目文件中的 UICulture 设置。
-
 //[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
-
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //主题特定资源词典所处位置
@@ -51,5 +49,5 @@ using System.Windows;
 // 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.2.1")]
-[assembly: AssemblyFileVersion("1.1.2.1")]
+[assembly: AssemblyVersion("1.1.3.2")]
+[assembly: AssemblyFileVersion("1.1.3.2")]
