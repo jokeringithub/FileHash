@@ -38,7 +38,7 @@ namespace FileHash
             this.MainWindowFileInfoAndHashEnables = new FileInfoAndHashEnables()
             {
                 Name = true, FullName = false, Length = true, LastWriteTime = true,
-                CRC32 = false, MD5 = true, SHA1 = true, SHA256 = false, SHA384 = false, SHA512 = false,
+                CRC32 = false, MD5 = true, SHA1 = true, SHA256 = true, SHA384 = false, SHA512 = false,
             };
             this.MainWindowHashFormat = new HashFormat()
             { IsLowerHexFormat = false, IsUpperHexFormat = true, IsBase64Format = false, };
@@ -200,7 +200,7 @@ namespace FileHash
             }
             catch (FileNotFoundException exception)
             {
-                this.LocalizedInfo.FileNotFoundResultAppend(exception.FileName);
+                this.LocalizedInfo.FileErrorResultAppend(exception.FileName);
             }
         }
 
@@ -231,7 +231,7 @@ namespace FileHash
                 }
                 catch (FileNotFoundException)
                 {
-                    this.LocalizedInfo.FileNotFoundResultAppend(filePath);
+                    this.LocalizedInfo.FileErrorResultAppend(filePath);
                     continue;
                 }
             }
@@ -242,7 +242,7 @@ namespace FileHash
             }
             catch (FileNotFoundException exception)
             {
-                this.LocalizedInfo.FileNotFoundResultAppend(exception.FileName);
+                this.LocalizedInfo.FileErrorResultAppend(exception.FileName);
             }
         }
 
@@ -283,7 +283,8 @@ namespace FileHash
             // 当前文件
             if (this.fileInfoAndHashList.Current != null)
             {
-                this.MainWindowComputeProgress.CurrentFileProgress = this.fileInfoAndHashList.Current.ComputeProgress;
+                this.MainWindowComputeProgress.CurrentFileProgress =
+                    this.fileInfoAndHashList.Current.ComputeProgress;
             }
 
             // 所有文件。
@@ -314,7 +315,8 @@ namespace FileHash
                 // 加上当前文件进度。
                 if (this.fileInfoAndHashList.Current != null)
                 {
-                    allFileProgress += this.fileInfoAndHashList.Current.ComputeProgress / this.fileInfoAndHashList.Count;
+                    allFileProgress += 
+                        this.fileInfoAndHashList.Current.ComputeProgress / this.fileInfoAndHashList.Count;
                 }
 
                 // 避免在计算完成是因线程不同步导致结果为无穷大的情况。

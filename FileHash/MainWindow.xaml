@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileHash"
         mc:Ignorable="d"
-        Title="{Binding LocalizedComponentContent.MainWindowTitle, ElementName=mainWindow, Mode=OneWay}" Height="400" Width="500" AllowDrop="True" WindowStartupLocation="CenterScreen" MinWidth="500" MinHeight="300" Icon="FileHash.ico">
+        Title="{Binding LocalizedComponentContent.MainWindowTitle, ElementName=mainWindow}" Height="400" Width="500" AllowDrop="True" WindowStartupLocation="CenterScreen" MinWidth="500" MinHeight="300" Icon="FileHash.ico">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -32,11 +32,11 @@
         <CheckBox Content="{Binding LocalizedComponentContent.FileSHA256CheckBoxContent, ElementName=mainWindow}" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Margin="5,0,0,0" IsChecked="{Binding MainWindowFileInfoAndHashEnables.SHA256, ElementName=mainWindow}"/>
         <CheckBox Content="{Binding LocalizedComponentContent.FileSHA384CheckBoxContent, ElementName=mainWindow}" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" Margin="5,0,0,0" IsChecked="{Binding MainWindowFileInfoAndHashEnables.SHA384, ElementName=mainWindow}"/>
         <CheckBox Content="{Binding LocalizedComponentContent.FileSHA512CheckBoxContent, ElementName=mainWindow}" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" Margin="5,0,0,0" IsChecked="{Binding MainWindowFileInfoAndHashEnables.SHA512, ElementName=mainWindow}"/>
-        <RadioButton Content="{Binding LocalizedComponentContent.LowerHexFormatRadioButtonContent, ElementName=mainWindow}" Grid.Column="3" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="2" VerticalAlignment="Center" IsChecked="{Binding MainWindowHashFormat.IsLowerHexFormat, ElementName=mainWindow}"/>
-        <RadioButton Content="{Binding LocalizedComponentContent.UpperHexFormatRadioButtonContent, ElementName=mainWindow}" Grid.Column="3" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="3" VerticalAlignment="Center" IsChecked="{Binding MainWindowHashFormat.IsUpperHexFormat, ElementName=mainWindow}"/>
-        <RadioButton Content="{Binding LocalizedComponentContent.Base64FormatRadioButtonContent, ElementName=mainWindow}" Grid.Column="3" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="4" VerticalAlignment="Center" IsChecked="{Binding MainWindowHashFormat.IsBase64Format, ElementName=mainWindow}"/>
-        <ProgressBar Grid.ColumnSpan="4" Margin="5,5,5,2" Grid.Row="5" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="{Binding MainWindowComputeProgress.CurrentFileProgress, ElementName=mainWindow}"/>
-        <ProgressBar Grid.ColumnSpan="4" Margin="5,2,5,5" Grid.Row="6" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="{Binding MainWindowComputeProgress.AllFileProgress, ElementName=mainWindow}"/>
+        <RadioButton Content="{Binding LocalizedComponentContent.LowerHexFormatRadioButtonContent, ElementName=mainWindow}" Grid.Column="3" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="2" VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding MainWindowHashFormat.IsLowerHexFormat, ElementName=mainWindow}"/>
+        <RadioButton Content="{Binding LocalizedComponentContent.UpperHexFormatRadioButtonContent, ElementName=mainWindow}" Grid.Column="3" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="3" VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding MainWindowHashFormat.IsUpperHexFormat, ElementName=mainWindow}"/>
+        <RadioButton Content="{Binding LocalizedComponentContent.Base64FormatRadioButtonContent, ElementName=mainWindow}" Grid.Column="3" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="4" VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding MainWindowHashFormat.IsBase64Format, ElementName=mainWindow}"/>
+        <ProgressBar Grid.ColumnSpan="4" Margin="5,5,5,2.5" Grid.Row="5" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="{Binding MainWindowComputeProgress.CurrentFileProgress, ElementName=mainWindow}"/>
+        <ProgressBar Grid.ColumnSpan="4" Margin="5,2.5,5,5" Grid.Row="6" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="{Binding MainWindowComputeProgress.AllFileProgress, ElementName=mainWindow}"/>
         <Button Content="{Binding LocalizedComponentContent.CopyButtonContent, ElementName=mainWindow}" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" Margin="5" Click="CopyButton_Click"/>
         <Button Content="{Binding LocalizedComponentContent.ClearButtonContent, ElementName=mainWindow}" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" Margin="5" Click="ClearButton_Click"/>
         <Button Content="{Binding LocalizedComponentContent.SkipButtonContent, ElementName=mainWindow}" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" Margin="5" Click="SkipButton_Click"/>

@@ -8,19 +8,15 @@ using System.Threading;
 namespace FileHash
 {
     /// <summary>
-    /// 并行计算文件散列值类，依赖 <see cref="FileHashParallel.FileHash"/> 类。
+    /// 并行计算文件散列值类，依赖 <see cref="FileHashCompute"/> 类。
     /// </summary>
     public partial class FileHashParallel : IDisposable
     {
         /// <summary>
         /// 获取允许计算的散列值的类型数量
         /// </summary>
-        public static readonly int HashTypeCount = FileHash.HashTypeCount;
+        public static readonly int HashTypeCount = FileHashCompute.HashTypeCount;
 
-        /// <summary>
-        /// 传入的文件路径。
-        /// </summary>
-        private readonly string filePath;
         /// <summary>
         /// 计算散列值的标志向量。
         /// </summary>
@@ -36,7 +32,7 @@ namespace FileHash
         /// <summary>
         /// 计算散列类的数组。
         /// </summary>
-        private FileHash[] fileHashes;
+        private FileHashCompute[] fileHashes;
         /// <summary>
         /// 计算文件散列的文件流数组。
         /// </summary>
@@ -64,7 +60,7 @@ namespace FileHash
                 throw new ArgumentException();
             }
 
-            this.filePath = filePath;
+            this.FilePath = filePath;
             this.fileHashEnables = fileHashEnables;
             this.fileHashList = new List<byte[]>();
             this.isDisposed = false;
@@ -86,7 +82,7 @@ namespace FileHash
         /// <summary>
         /// 传入的文件路径。
         /// </summary>
-        public string FilePath { get => this.filePath; }
+        public string FilePath { get; }
         /// <summary>
         /// 指示计算是否已经开始。
         /// </summary>
@@ -190,11 +186,11 @@ namespace FileHash
         private void Compute()
         {
             // 初始化计算散列值的各线程。
-            this.fileHashes = new FileHash[HashTypeCount];
+            this.fileHashes = new FileHashCompute[HashTypeCount];
             this.fileHashComputeThreads = new Thread[HashTypeCount];
             for (int i = 0; i < FileHashParallel.HashTypeCount; i++)
             {
-                this.fileHashes[i] = new FileHash(this.fileHashComputeFileStreams[i], (FileHash.HashType)i);
+                this.fileHashes[i] = new FileHashCompute(this.fileHashComputeFileStreams[i], (HashType)i);
                 this.fileHashComputeThreads[i] = new Thread(this.fileHashes[i].Compute) { IsBackground = true };
             }
 
@@ -287,7 +283,8 @@ namespace FileHash
             {
                 // 创建文件流并启动线程。
                 this.IsStarted = true;
-                this.fileHashComputeFileStreams = this.CreatFileStreams(filePath, HashTypeCount);
+                this.fileHashComputeFileStreams = 
+                    this.CreatFileStreams(this.FilePath, FileHashParallel.HashTypeCount);
                 this.fileHashComputeBackgroundWorker.RunWorkerAsync();
             }
         }
@@ -448,27 +445,27 @@ namespace FileHash
             /// <summary>
             /// 以是否正常完成标志作为参数实例化此类
             /// </summary>
-            /// <param name="isNormallyCompleted"></param>
-            public CompletedEventArgs(bool isNormallyCompleted)
+            /// <param name="hasResult"></param>
+            public CompletedEventArgs(bool hasResult)
             {
-                this.IsNormallyCompleted = isNormallyCompleted;
+                this.HasResult = hasResult;
             }
 
             /// <summary>
             /// 以是否正常完成标志和计算结果作为参数实例化此类
             /// </summary>
-            /// <param name="isNormallyCompleted"></param>
+            /// <param name="hasResult"></param>
             /// <param name="result"></param>
-            public CompletedEventArgs(bool isNormallyCompleted, FileHashParallel result)
+            public CompletedEventArgs(bool hasResult, FileHashParallel result)
             {
-                this.IsNormallyCompleted = isNormallyCompleted;
+                this.HasResult = hasResult;
                 this.Result = result;
             }
 
             /// <summary>
             /// 指示是否正常完成的标志位
             /// </summary>
-            public bool IsNormallyCompleted { get; }
+            public bool HasResult { get; }
             /// <summary>
             /// 计算得到的散列值列表
             /// </summary>

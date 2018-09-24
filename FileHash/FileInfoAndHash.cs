@@ -98,7 +98,7 @@ namespace FileHash
         private void FileHashParallel_Completed(object sender, FileHashParallel.CompletedEventArgs e)
         {
             // 触发散列计算完成事件。
-            var args = new CompletedEventArgs(e.IsNormallyCompleted, this);
+            var args = new CompletedEventArgs(e.HasResult, this);
             this.OnCompleted(this, args);
         }
 
@@ -214,27 +214,27 @@ namespace FileHash
             /// <summary>
             /// 以是否正常完成标志作为参数实例化此类。
             /// </summary>
-            /// <param name="isNormallyCompleted">是否正常完成标志。</param>
-            public CompletedEventArgs(bool isNormallyCompleted)
+            /// <param name="hasResult">是否正常完成标志。</param>
+            public CompletedEventArgs(bool hasResult)
             {
-                this.IsNormallyCompleted = isNormallyCompleted;
+                this.HasResult = hasResult;
             }
 
             /// <summary>
             /// 以是否正常完成标志和计算结果作为参数实例化此类。
             /// </summary>
-            /// <param name="isNormallyCompleted">是否正常完成标志。</param>
+            /// <param name="hasResult">是否正常完成标志。</param>
             /// <param name="result">计算结果。</param>
-            public CompletedEventArgs(bool isNormallyCompleted, FileInfoAndHash result)
+            public CompletedEventArgs(bool hasResult, FileInfoAndHash result)
             {
-                this.IsNormallyCompleted = isNormallyCompleted;
+                this.HasResult = hasResult;
                 this.Result = result;
             }
 
             /// <summary>
             /// 指示是否正常完成的标志位。
             /// </summary>
-            public bool IsNormallyCompleted { get; }
+            public bool HasResult { get; }
             /// <summary>
             /// 计算结果。
             /// </summary>
