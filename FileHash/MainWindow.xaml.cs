@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using FileHash.Model;
+using FileHash.Properties;
+using FileHash.View;
 
 namespace FileHash
 {
@@ -17,13 +20,13 @@ namespace FileHash
     public partial class MainWindow : Window
     {
         /// <summary>
-        /// 主窗口所使用的定时器，当前仅用于进度条更新。
+        /// 主窗口的刷新定时器。
         /// </summary>
-        private readonly Timer mainWindowTimer;
+        private readonly Timer RefreshTimer;
         /// <summary>
         /// 计算文件散列的线程队列。
         /// </summary>
-        private readonly FileInfoAndHashList fileInfoAndHashList;
+        private readonly FileInfoAndHashList FileList;
 
         /// <summary>
         /// 初始化 <see cref="MainWindow"/> 的实例。
@@ -31,51 +34,45 @@ namespace FileHash
         public MainWindow()
         {
             // 初始化部分参数。
-            this.LocalizedInfo = new FileInfoAndHashLocalized(CultureInfo.CurrentUICulture);
-            this.fileInfoAndHashList = new FileInfoAndHashList();
-            this.fileInfoAndHashList.CurrentCompleted += this.FileInfoAndHashList_CurrentCompleted;
-            this.fileInfoAndHashList.ListCompleted += this.FileInfoAndHashList_ListCompleted;
-            this.MainWindowFileInfoAndHashEnables = new FileInfoAndHashEnables()
-            {
-                Name = true, FullName = false, Length = true, LastWriteTime = true,
-                CRC32 = false, MD5 = true, SHA1 = true, SHA256 = true, SHA384 = false, SHA512 = false,
-            };
-            this.MainWindowHashFormat = new HashFormat()
-            { IsLowerHexFormat = false, IsUpperHexFormat = true, IsBase64Format = false, };
-            this.MainWindowComputeProgress = new ComputeProgress();
-
-            // 本地化用户控件。
-            this.LocalizedComponentContent = new ComponentContentLocalized(CultureInfo.CurrentUICulture);
+            this.FileList = new FileInfoAndHashList();
+            this.FileList.CurrentCompleted += this.FileList_CurrentCompleted;
+            this.FileList.ListCompleted += this.FileList_ListCompleted;
+            this.ResultFlags = FileInfoAndHashFlags.Create();
+            this.HashFormat = BinaryFormat.Create();
+            this.HashFormat.IsUpperHexFormat = true;
+            this.FileListProgress = ListProgress.Create();
+            this.LocalizedResult = new LocalizedFileInfoAndHash();
 
             // 初始化用户控件。
+            this.LocalizedResources = new LocalizedResources();
             this.InitializeComponent();
             
             // 初始化定时器。
             const double fps = 30;
-            this.mainWindowTimer = new Timer(1000 / fps);
-            this.mainWindowTimer.Elapsed += this.MainWindowTimer_Elapsed;
+            this.RefreshTimer = new Timer(1000 / fps);
+            this.RefreshTimer.Elapsed += this.RefreshTimer_Elapsed;
         }
 
         /// <summary>
         /// 本地化用户控件。
         /// </summary>
-        public ComponentContentLocalized LocalizedComponentContent { get; }
+        public LocalizedResources LocalizedResources { get; }
         /// <summary>
         /// 将计算结果本地化。
         /// </summary>
-        public FileInfoAndHashLocalized LocalizedInfo { get; }
+        public LocalizedFileInfoAndHash LocalizedResult { get; }
         /// <summary>
         /// 文件信息和散列值标志向量。
         /// </summary>
-        public FileInfoAndHashEnables MainWindowFileInfoAndHashEnables { get; }
+        public FileInfoAndHashFlags ResultFlags { get; }
         /// <summary>
         /// 指示散列值的格式。
         /// </summary>
-        public HashFormat MainWindowHashFormat { get; }
+        public BinaryFormat HashFormat { get; }
         /// <summary>
         /// 文件散列计算进度。
         /// </summary>
-        public ComputeProgress MainWindowComputeProgress { get; }
+        public ListProgress FileListProgress { get; }
 
         /// <summary>
         /// 拖放完成，传递拖放的文件路径字符串。
@@ -114,7 +111,7 @@ namespace FileHash
                     }
                 }
                 this.AddToFileInfoAndHashList(pathList.ToArray());
-                this.mainWindowTimer.Start();
+                this.RefreshTimer.Start();
             }
         }
 
@@ -125,9 +122,9 @@ namespace FileHash
         /// <param name="e"></param>
         private void CopyButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.LocalizedInfo.Result != string.Empty)
+            if (this.LocalizedResult.Value != string.Empty)
             {
-                Clipboard.SetText(this.LocalizedInfo.Result);
+                Clipboard.SetText(this.LocalizedResult.Value);
             }
         }
 
@@ -138,7 +135,7 @@ namespace FileHash
         /// <param name="e"></param>
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            this.LocalizedInfo.Result = string.Empty;
+            this.LocalizedResult.Value = string.Empty;
         }
 
         /// <summary>
@@ -148,7 +145,7 @@ namespace FileHash
         /// <param name="e"></param>
         private void SkipButton_Click(object sender, RoutedEventArgs e)
         {
-            this.fileInfoAndHashList.Skip();
+            this.FileList.Skip();
         }
 
         /// <summary>
@@ -158,7 +155,7 @@ namespace FileHash
         /// <param name="e"></param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.fileInfoAndHashList.Cancel();
+            this.FileList.Cancel();
         }
 
         /// <summary>
@@ -177,9 +174,9 @@ namespace FileHash
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MainWindowTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private void RefreshTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            if (this.mainWindowTimer.Enabled)
+            if (this.RefreshTimer.Enabled)
             {
                 this.UpadateComputeProgress();
             }
@@ -190,17 +187,18 @@ namespace FileHash
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void FileInfoAndHashList_CurrentCompleted(object sender, FileInfoAndHash.CompletedEventArgs e)
+        private void FileList_CurrentCompleted(
+            object sender, NullableResultEventArgs<FileInfoAndHash> e)
         {
             this.UpdateComputeResult(e.Result);
 
             try
             {
-                this.fileInfoAndHashList.StartNext();
+                this.FileList.StartNext();
             }
             catch (FileNotFoundException exception)
             {
-                this.LocalizedInfo.FileErrorResultAppend(exception.FileName);
+                this.LocalizedResult.AppendFileError(exception.FileName);
             }
         }
 
@@ -209,12 +207,13 @@ namespace FileHash
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void FileInfoAndHashList_ListCompleted(object sender, EventArgs e)
+        private void FileList_ListCompleted(
+            object sender, NullableResultEventArgs<FileInfoAndHashList> e)
         {
-            this.mainWindowTimer.Stop();
-            this.fileInfoAndHashList.Clear();
-            this.MainWindowComputeProgress.CurrentFileProgress = 1;
-            this.MainWindowComputeProgress.AllFileProgress = 1;
+            this.RefreshTimer.Stop();
+            this.FileList.Clear();
+            this.FileListProgress.Current = 1;
+            this.FileListProgress.All = 1;
         }
 
         /// <summary>
@@ -227,22 +226,22 @@ namespace FileHash
             {
                 try
                 {
-                    this.fileInfoAndHashList.Add(filePath, this.MainWindowFileInfoAndHashEnables.AllEnables);
+                    this.FileList.Add(filePath, this.ResultFlags.Flags);
                 }
                 catch (FileNotFoundException)
                 {
-                    this.LocalizedInfo.FileErrorResultAppend(filePath);
+                    this.LocalizedResult.AppendFileError(filePath);
                     continue;
                 }
             }
 
             try
             {
-                this.fileInfoAndHashList.StartNext();
+                this.FileList.StartNext();
             }
             catch (FileNotFoundException exception)
             {
-                this.LocalizedInfo.FileErrorResultAppend(exception.FileName);
+                this.LocalizedResult.AppendFileError(exception.FileName);
             }
         }
 
@@ -255,23 +254,23 @@ namespace FileHash
             // 取出带格式的结果，转化为本地化结果。
             try
             {
-                if (this.MainWindowHashFormat.IsLowerHexFormat)
+                if (this.HashFormat.IsLowerHexFormat)
                 {
-                    this.LocalizedInfo.ResultAppend(result.ToLowerHexStrings());
+                    this.LocalizedResult.Append(result.ToLowerHexStrings());
                 }
-                else if (this.MainWindowHashFormat.IsUpperHexFormat)
+                else if (this.HashFormat.IsUpperHexFormat)
                 {
-                    this.LocalizedInfo.ResultAppend(result.ToUpperHexStrings());
+                    this.LocalizedResult.Append(result.ToUpperHexStrings());
                 }
-                else if (this.MainWindowHashFormat.IsBase64Format)
+                else if (this.HashFormat.IsBase64Format)
                 {
-                    this.LocalizedInfo.ResultAppend(result.ToBase64Strings());
+                    this.LocalizedResult.Append(result.ToBase64Strings());
                 }
             }
             // 文件散列计算未完成。
             catch (NotImplementedException)
             {
-                this.LocalizedInfo.CancelledResultAppend(result.FilePath);
+                this.LocalizedResult.AppendCancelled(result.FilePath);
             }
         }
 
@@ -281,31 +280,31 @@ namespace FileHash
         private void UpadateComputeProgress()
         {
             // 当前文件
-            if (this.fileInfoAndHashList.Current != null)
+            if (this.FileList.Current != null)
             {
-                this.MainWindowComputeProgress.CurrentFileProgress =
-                    this.fileInfoAndHashList.Current.ComputeProgress;
+                this.FileListProgress.Current =
+                    this.FileList.Current.ComputeProgress;
             }
 
             // 所有文件。
-            if ((this.fileInfoAndHashList != null) && (this.fileInfoAndHashList.Count != 0))
+            if ((this.FileList != null) && (this.FileList.Count != 0))
             {
                 // 获取完成计算的文件数量。
                 int computedFileCount;
                 try
                 {
-                    computedFileCount = this.fileInfoAndHashList.IndexOf(fileInfoAndHashList.Current);
+                    computedFileCount = this.FileList.IndexOf(FileList.Current);
                 }
                 catch (Exception)
                 {
-                    computedFileCount = this.fileInfoAndHashList.Count;
+                    computedFileCount = this.FileList.Count;
                 }
 
                 // 避免在计算完成是因线程不同步导致结果为无穷大的情况。
                 double allFileProgress;
-                if (this.fileInfoAndHashList.Count != 0)
+                if (this.FileList.Count != 0)
                 {
-                    allFileProgress = (double)computedFileCount / this.fileInfoAndHashList.Count;
+                    allFileProgress = (double)computedFileCount / this.FileList.Count;
                 }
                 else
                 {
@@ -313,10 +312,10 @@ namespace FileHash
                 }
 
                 // 加上当前文件进度。
-                if (this.fileInfoAndHashList.Current != null)
+                if (this.FileList.Current != null)
                 {
                     allFileProgress += 
-                        this.fileInfoAndHashList.Current.ComputeProgress / this.fileInfoAndHashList.Count;
+                        this.FileList.Current.ComputeProgress / this.FileList.Count;
                 }
 
                 // 避免在计算完成是因线程不同步导致结果为无穷大的情况。
@@ -325,7 +324,7 @@ namespace FileHash
                     allFileProgress = 1;
                 }
 
-                this.MainWindowComputeProgress.AllFileProgress = allFileProgress;
+                this.FileListProgress.All = allFileProgress;
             }
         }
     }

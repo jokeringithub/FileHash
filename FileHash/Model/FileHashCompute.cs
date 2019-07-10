@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 
-namespace FileHash
+namespace FileHash.Model
 {
     /// <summary>
     /// 用于计算文件散列值的类。
@@ -189,7 +187,7 @@ namespace FileHash
             /// 创建一个默认的实例实现 CRC32。
             /// </summary>
             /// <returns>CRC32 实例。</returns>
-            new public static CRC32 Create()
+            public static new CRC32 Create()
             {
                 return new CRC32();
             }

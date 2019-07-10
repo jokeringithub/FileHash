@@ -65,23 +65,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="BindingBase\Bindable.cs" />
-    <Compile Include="BindingBase\BindableObject.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FileHashCompute.cs" />
-    <Compile Include="FileHashParallel.cs" />
-    <Compile Include="FileInfoAndHash.cs" />
-    <Compile Include="FileInfoAndHashList.cs" />
-    <Compile Include="HashType.cs" />
-    <Compile Include="MainWindow.Bindings\MainWindow.ComponentContentLocalized.cs" />
-    <Compile Include="MainWindow.Bindings\MainWindow.ComputeProgress.cs" />
-    <Compile Include="MainWindow.Bindings\MainWindow.FileInfoAndHashEnables.cs" />
-    <Compile Include="MainWindow.Bindings\MainWindow.FileInfoAndHashLocalized.cs" />
-    <Compile Include="MainWindow.Bindings\MainWindow.SupportedLanguage.cs" />
-    <Compile Include="MainWindow.Bindings\MainWindow.HashFormat.cs" />
+    <Compile Include="Binding\Bindable.cs" />
+    <Compile Include="Binding\BindableObject.cs" />
+    <Compile Include="Binding\BindableTypeProvider.cs" />
+    <Compile Include="Binding\BindableTypeProviderBase.cs" />
+    <Compile Include="Binding\IBindableTypeProvider.cs" />
+    <Compile Include="Binding\ReflectionEmitHelper.cs" />
+    <Compile Include="Binding\ReflectionHelper.cs" />
+    <Compile Include="Model\FileHashCompute.cs" />
+    <Compile Include="Model\FileHashParallel.cs" />
+    <Compile Include="Model\FileInfoAndHash.cs" />
+    <Compile Include="Model\FileInfoAndHashList.cs" />
+    <Compile Include="Model\HashType.cs" />
+    <Compile Include="Model\NullableResultEventArgs.cs" />
+    <Compile Include="Properties\LocalizedResources.cs" />
+    <Compile Include="View\ListProgress.cs" />
+    <Compile Include="View\FileInfoAndHashFlags.cs" />
+    <Compile Include="View\LocalizedFileInfoAndHash.cs" />
+    <Compile Include="Properties\SupportedLanguage.cs" />
+    <Compile Include="View\BinaryFormat.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

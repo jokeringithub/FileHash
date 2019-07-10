@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FileHash
+﻿namespace FileHash.Model
 {
     /// <summary>
     /// 散列值类型枚举类。
