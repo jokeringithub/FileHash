@@ -1,9 +1,6 @@
-﻿<Application x:Class="FileHash.App"
+﻿<Application x:Class="XstarS.FileHash.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:FileHash"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
+             xmlns:local="clr-namespace:XstarS.FileHash"
+             StartupUri="Views/MainWindow.xaml">
 </Application>

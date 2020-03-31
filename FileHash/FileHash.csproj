@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EF1E830A-3FB0-44A9-88DE-777DB4B2DADB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>FileHash</RootNamespace>
+    <RootNamespace>XstarS.FileHash</RootNamespace>
     <AssemblyName>FileHash</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -38,7 +38,7 @@
     <DocumentationFile>bin\Release\FileHash.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>FileHash.ico</ApplicationIcon>
+    <ApplicationIcon>Properties\FileHash.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,37 +61,46 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Binding\Bindable.cs" />
-    <Compile Include="Binding\BindableObject.cs" />
-    <Compile Include="Binding\BindableTypeProvider.cs" />
-    <Compile Include="Binding\BindableTypeProviderBase.cs" />
-    <Compile Include="Binding\IBindableTypeProvider.cs" />
-    <Compile Include="Binding\ReflectionEmitHelper.cs" />
-    <Compile Include="Binding\ReflectionHelper.cs" />
-    <Compile Include="Model\FileHashCompute.cs" />
-    <Compile Include="Model\FileHashParallel.cs" />
-    <Compile Include="Model\FileInfoAndHash.cs" />
-    <Compile Include="Model\FileInfoAndHashList.cs" />
-    <Compile Include="Model\HashType.cs" />
-    <Compile Include="Model\NullableResultEventArgs.cs" />
-    <Compile Include="Properties\LocalizedResources.cs" />
-    <Compile Include="View\ListProgress.cs" />
-    <Compile Include="View\FileInfoAndHashFlags.cs" />
-    <Compile Include="View\LocalizedFileInfoAndHash.cs" />
-    <Compile Include="Properties\SupportedLanguage.cs" />
-    <Compile Include="View\BinaryFormat.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Helpers\ConvertBytes.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="Helpers\PathHelper.cs" />
+    <Compile Include="Models\BytesFormat.cs" />
+    <Compile Include="Models\BytesFormatView.cs" />
+    <Compile Include="Models\CRC32.cs" />
+    <Compile Include="Models\FileHash.cs" />
+    <Compile Include="Models\FileHashTypes.cs" />
+    <Compile Include="Models\FileHashTypesView.cs" />
+    <Compile Include="Models\FileInfoAndHash.cs" />
+    <Compile Include="Models\FileInfoAndHashCollection.cs" />
+    <Compile Include="Models\FileInfoFields.cs" />
+    <Compile Include="Models\FileInfoFieldsView.cs" />
+    <Compile Include="Models\ListProgressView.cs" />
+    <Compile Include="Properties\StringResources.cs" />
+    <Compile Include="References\CommandBase.cs" />
+    <Compile Include="References\ComponentModelBase.cs" />
+    <Compile Include="References\DelegateCommand.cs" />
+    <Compile Include="References\ExceptionEventArgs.cs" />
+    <Compile Include="References\ExceptioningObject.cs" />
+    <Compile Include="References\IDispatchException.cs" />
+    <Compile Include="References\ISendMessage.cs" />
+    <Compile Include="References\MessageEventArgs.cs" />
+    <Compile Include="References\MessageLevel.cs" />
+    <Compile Include="References\MessagingObject.cs" />
+    <Compile Include="References\Observable.cs" />
+    <Compile Include="References\ObservableDataObject.cs" />
+    <Compile Include="References\ObservableObject.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\MainWindowModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -120,7 +129,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="FileHash.ico" />
+    <Resource Include="Properties\FileHash.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
