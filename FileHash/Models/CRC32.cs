@@ -1,10 +1,12 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 
 namespace XstarS.Security.Cryptography
 {
     /// <summary>
     /// 提供 CRC32 算法的实现。
     /// </summary>s
+    [CLSCompliant(false)]
     public class CRC32 : HashAlgorithm
     {
         /// <summary>
