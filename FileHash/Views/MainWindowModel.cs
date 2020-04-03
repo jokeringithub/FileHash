@@ -9,7 +9,7 @@ namespace XstarS.FileHash.Views
     /// <summary>
     /// 为 <see cref="MainWindow"/> 提供数据逻辑模型。
     /// </summary>
-    public class MainWindowModel : ComponentModelBase
+    public class MainWindowModel : ObservableDataObject
     {
         /// <summary>
         /// 初始化 <see cref="MainWindowModel"/> 类的新实例。

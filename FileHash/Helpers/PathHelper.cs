@@ -17,7 +17,7 @@ namespace XstarS.FileHash.Helpers
         /// <returns><paramref name="path"/> 包含的所有文件的完整路径。</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage(
             "Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        public static string[] GetFilePaths(string path, bool recurse)
+        internal static string[] GetFilePaths(string path, bool recurse)
         {
             var filePaths = new List<string>();
             if (File.Exists(path))

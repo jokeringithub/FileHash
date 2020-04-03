@@ -10,7 +10,7 @@ namespace XstarS.FileHash.Properties
     internal static class StringResources
     {
         /// <summary>
-        /// 字符串资源内部存储。
+        /// 表示本地化的字符串资源存储。
         /// </summary>
         private static readonly Dictionary<CultureInfo, Dictionary<string, string>> LocalizedStrings;
 
