@@ -14,7 +14,8 @@ namespace XstarS.FileHash.Helpers
         /// <returns><paramref name="value"/> 的所有位域名称。</returns>
         internal static string[] GetNames(Enum value)
         {
-            return value.ToString().Split(new[] { ", " }, StringSplitOptions.None);
+            return value.ToString().Split(
+                new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }

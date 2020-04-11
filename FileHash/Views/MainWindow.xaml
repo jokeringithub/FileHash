@@ -58,13 +58,13 @@
                 </Grid.RowDefinitions>
                 <CheckBox Grid.Row="0" Margin="5,0" VerticalContentAlignment="Center"
                           Content="{x:Static props:StringResources.FileFullNameCheckBoxContent}"
-                          IsChecked="{Binding HasFullName}"/>
+                          IsChecked="{Binding FullName}"/>
                 <CheckBox Grid.Row="1" Margin="5,0" VerticalContentAlignment="Center"
                           Content="{x:Static props:StringResources.FileLengthCheckBoxContent}"
-                          IsChecked="{Binding HasLength}"/>
+                          IsChecked="{Binding Length}"/>
                 <CheckBox Grid.Row="2" Margin="5,0" VerticalContentAlignment="Center"
                           Content="{x:Static props:StringResources.FileLastWriteTimeCheckBoxContent}"
-                          IsChecked="{Binding HasLastWriteTime}"/>
+                          IsChecked="{Binding LastWriteTime}"/>
             </Grid>
             <Grid Grid.Column="1" DataContext="{Binding FileHashTypes}">
                 <Grid.RowDefinitions>
@@ -78,22 +78,22 @@
                 </Grid.ColumnDefinitions>
                 <CheckBox Grid.Row="0" Grid.Column="0" Margin="5,0" VerticalContentAlignment="Center"
                           Content="{x:Static props:StringResources.FileCRC32HashCheckBoxContent}"
-                          IsChecked="{Binding HasCRC32}"/>
+                          IsChecked="{Binding CRC32}"/>
                 <CheckBox Grid.Row="1" Grid.Column="0" Margin="5,0" VerticalContentAlignment="Center"
                           Content="{x:Static props:StringResources.FileMD5HashCheckBoxContent}"
-                          IsChecked="{Binding HasMD5}"/>
+                          IsChecked="{Binding MD5}"/>
                 <CheckBox Grid.Row="2" Grid.Column="0" Margin="5,0" VerticalContentAlignment="Center"
                           Content="{x:Static props:StringResources.FileSHA1HashCheckBoxContent}"
-                          IsChecked="{Binding HasSHA1}"/>
+                          IsChecked="{Binding SHA1}"/>
                 <CheckBox Grid.Row="0" Grid.Column="1" Margin="5,0" VerticalContentAlignment="Center"
                           Content="{x:Static props:StringResources.FileSHA256HashCheckBoxContent}"
-                          IsChecked="{Binding HasSHA256}"/>
+                          IsChecked="{Binding SHA256}"/>
                 <CheckBox Grid.Row="1" Grid.Column="1" Margin="5,0" VerticalContentAlignment="Center"
                           Content="{x:Static props:StringResources.FileSHA384HashCheckBoxContent}"
-                          IsChecked="{Binding HasSHA384}"/>
+                          IsChecked="{Binding SHA384}"/>
                 <CheckBox Grid.Row="2" Grid.Column="1" Margin="5,0" VerticalContentAlignment="Center"
                           Content="{x:Static props:StringResources.FileSHA512HashCheckBoxContent}"
-                          IsChecked="{Binding HasSHA512}"/>
+                          IsChecked="{Binding SHA512}"/>
             </Grid>
             <Grid Grid.Column="2" DataContext="{Binding FileHashFormat}">
                 <Grid.RowDefinitions>
@@ -103,13 +103,13 @@
                 </Grid.RowDefinitions>
                 <RadioButton Grid.Row="0" Margin="5,0" VerticalContentAlignment="Center"
                              Content="{x:Static props:StringResources.LowerHexHashFormatRadioButtonContent}"
-                             IsChecked="{Binding IsLowerHex}"/>
+                             IsChecked="{Binding LowerHex}"/>
                 <RadioButton Grid.Row="1" Margin="5,0" VerticalContentAlignment="Center"
                              Content="{x:Static props:StringResources.UpperHexHashFormatRadioButtonContent}"
-                             IsChecked="{Binding IsUpperHex}"/>
+                             IsChecked="{Binding UpperHex}"/>
                 <RadioButton Grid.Row="2" Margin="5,0" VerticalContentAlignment="Center"
                              Content="{x:Static props:StringResources.Base64HashFormatRadioButtonContent}"
-                             IsChecked="{Binding IsBase64}"/>
+                             IsChecked="{Binding Base64}"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="3" DataContext="{Binding HashingProgress}">

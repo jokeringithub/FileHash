@@ -21,18 +21,18 @@ namespace XstarS.FileHash.Views
             this.HashingFiles.AllComplete += this.HashingFiles_AllComplete;
             this.FileInfoFields = new FileInfoFieldsView()
             {
-                HasName = true,
-                HasFullName = true,
-                HasLength = true,
-                HasLastWriteTime = true
+                Name = true,
+                FullName = true,
+                Length = true,
+                LastWriteTime = true
             };
             this.FileHashTypes = new FileHashTypesView()
             {
-                HasMD5 = true,
-                HasSHA1 = true,
-                HasSHA256 = true
+                MD5 = true,
+                SHA1 = true,
+                SHA256 = true
             };
-            this.FileHashFormat = new BytesFormatView() { IsUpperHex = true };
+            this.FileHashFormat = new BytesFormatView() { UpperHex = true };
             this.ResultText = string.Empty;
         }
 
