@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="XstarS.FileHash.Properties.StringResources" Collapsed="true">
+    <Position X="23.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BggAAAAYAAAMCQGgQABEFBAAAAADBJIAACAAASkEBAI=</HashCode>
+      <FileName>Properties\StringResources.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.ComponentModel.EnumFlagsVectorView&lt;TEnum&gt;" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAACAAAAAAgAAEAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>References\EnumFlagsVectorView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.ComponentModel.EnumVectorView&lt;TEnum&gt;" Collapsed="true">
+    <Position X="17.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAACIAAAAAAAAEAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>References\EnumVectorView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.ComponentModel.ObservableDataObject" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAIQAIAAAAAAAgAEAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>References\ObservableDataObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XstarS.FileHash.Helpers.ConvertBytes" Collapsed="true">
+    <Position X="23.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAACAAAAAAQ=</HashCode>
+      <FileName>Helpers\ConvertBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.Helpers.EnumHelper" Collapsed="true">
+    <Position X="22" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\EnumHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.Helpers.PathHelper" Collapsed="true">
+    <Position X="22" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\PathHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.Models.BytesFormatView" Collapsed="true">
+    <Position X="17.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACABAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\BytesFormatView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.Models.FileHash" Collapsed="true">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQCBAQCABABIAAAAIABAAAAQAAAAAAABgAACAgAA=</HashCode>
+      <FileName>Models\FileHash.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XstarS.FileHash.Models.FileHashTypesView" Collapsed="true">
+    <Position X="12.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAEAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\FileHashTypesView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.Models.FileInfoAndHash" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAEAAAAAAAAAAAEAAAAgAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Models\FileInfoAndHash.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.Models.FileInfoAndHashCollection" Collapsed="true">
+    <Position X="23.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAQCAABAAAAACAgCAARAQEAACEIAAgAACABAA=</HashCode>
+      <FileName>Models\FileInfoAndHashCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.Models.FileInfoFieldsView" Collapsed="true">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAIAAAAAAAARAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FileInfoFieldsView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.Models.ListProgressView" Collapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAIAAAAAAAAAAAAAABAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\ListProgressView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.Security.Cryptography.CRC32" Collapsed="true">
+    <Position X="25.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAARCAYAABECAQAAAAAAAAEAAAAAACgAAAAA=</HashCode>
+      <FileName>Models\CRC32.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.Views.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAEAAAAAAAAAAAAAAQAACgAAAAAAAA=</HashCode>
+      <FileName>Views\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XstarS.FileHash.Views.MainWindowModel" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQACAAIAAAAQABAAgAAgAAAKACBAAAAAAIgAAIAACAA=</HashCode>
+      <FileName>Views\MainWindowModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XstarS.FileHash.App" Collapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="XstarS.FileHash.Models.BytesFormat" Collapsed="true">
+    <Position X="22" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACABAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\BytesFormat.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="XstarS.FileHash.Models.FileHashTypes" Collapsed="true">
+    <Position X="23.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAEAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\FileHashTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="XstarS.FileHash.Models.FileInfoFields" Collapsed="true">
+    <Position X="25.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAIAAAAAAAARAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FileInfoFields.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
